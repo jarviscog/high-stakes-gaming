@@ -8,7 +8,7 @@ RED = (207, 102, 90, 255)
 
 class observer:
 
-    def __init__(self, bbox, name:str, c:str="white"):
+    def __init__(self, bbox, name: str, c: str = "white"):
 
         self.x = bbox['x']
         self.y = bbox['y']
@@ -26,18 +26,18 @@ class observer:
         width = i.width
         height = i.height
 
-        all_pixels = []
+        # all_pixels = []
         for x in range(width):
             for y in range(height):
                 # all_pixels.append(pixels[x, y])
                 # print(pixels[x,y])
-                if pixels[x,y] == GREEN:
+                if pixels[x, y] == GREEN:
                     return 'GREEN'
-                elif pixels[x,y] == RED:
+                elif pixels[x, y] == RED:
                     return 'RED'
-                elif pixels[x,y] == BLUE:
+                elif pixels[x, y] == BLUE:
                     return 'BLUE'
-                elif pixels[x,y] == YELLOW:
+                elif pixels[x, y] == YELLOW:
                     return 'YELLOW'
         # return all_pixels
         return 'NONE'
