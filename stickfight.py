@@ -83,13 +83,13 @@ def main():
 
 def shock_players(winner: str):
     if winner != 'GREEN':
-        print("Shock GREEN")
+        # Shock Green
     if winner != 'RED':
-        print("Shock RED")
+        # Shock Red
     if winner != 'BLUE':
-        print("Shock BLUE")
+        # Shock Blue
     if winner != 'YELLOW':
-        print("Shock YELLOW")
+        # Shock Yellow
 
 
 if __name__ == '__main__':
