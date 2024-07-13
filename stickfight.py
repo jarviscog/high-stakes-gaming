@@ -1,5 +1,4 @@
 import time
-from observer import observer
 import pyscreenshot
 
 import pyautogui
@@ -17,9 +16,13 @@ def is_close_to(color: tuple, other_color: tuple, width: int):
     print(f"Is close to {color} {other_color} {width}")
     close = True
     for i in range(3):
-        if (width > abs(color[i] - other_color[i])):
-            close = False
-    return close
+        print("Colors:")
+        print(abs(color[i] - other_color[i]))
+        if (width < abs(color[i] - other_color[i])):
+            print("Failed to match")
+            print(width > abs(color[i] - other_color[i]))
+            return False
+    return True 
 
 def checkColor(x, y): 
     im = ImageGrab.grab(bbox=(x, y, x+1, y+1))
@@ -35,16 +38,16 @@ def main():
         time.sleep(0.1)
         # print("[" + one.poll() + ", " + two.poll() + ", " + three.poll() + r"]")
         points = [
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2 - 50),
-            checkColor(SCREENWIDTH/2 - 50, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2 + 50, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2 - 50, SCREENHEIGHT/2 - 50),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2 - 20),
-            checkColor(SCREENWIDTH/2 - 20, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2 + 20, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2 - 20, SCREENHEIGHT/2 - 20),
+            checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2)),
+            checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2 - 50)),
+            checkColor(int(SCREENWIDTH/2 - 50), int(SCREENHEIGHT/2)),
+            checkColor(int(SCREENWIDTH/2 + 50), int(SCREENHEIGHT/2)),
+            checkColor(int(SCREENWIDTH/2 - 50), int(SCREENHEIGHT/2 - 50)),
+            checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2)),
+            checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2 - 20)),
+            checkColor(int(SCREENWIDTH/2 - 20), int(SCREENHEIGHT/2)),
+            checkColor(int(SCREENWIDTH/2 + 20), int(SCREENHEIGHT/2)),
+            checkColor(int(SCREENWIDTH/2 - 20), int(SCREENHEIGHT/2 - 20)),
         ]
         yellow_votes = 0
         red_votes = 0
