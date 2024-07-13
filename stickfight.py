@@ -13,14 +13,14 @@ GREEN = (105, 133, 88, 255)
 
 
 def is_close_to(color: tuple, other_color: tuple, width: int):
-    print(f"Is close to {color} {other_color} {width}")
+    # print(f"Is close to {color} {other_color} {width}")
     close = True
     for i in range(3):
-        print("Colors:")
-        print(abs(color[i] - other_color[i]))
+        # print("Colors:")
+        # print(abs(color[i] - other_color[i]))
         if (width < abs(color[i] - other_color[i])):
-            print("Failed to match")
-            print(width > abs(color[i] - other_color[i]))
+            # print("Failed to match")
+            # print(width > abs(color[i] - other_color[i]))
             return False
     return True 
 
