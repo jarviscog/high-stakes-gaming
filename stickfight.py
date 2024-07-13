@@ -7,9 +7,9 @@ from PIL import Image, ImageGrab
 SCREENWIDTH, SCREENHEIGHT = pyautogui.size()
 
 YELLOW = (220, 188, 76)
-RED = (207, 102, 90, 255)
-BLUE = (64, 150, 193, 255)
-GREEN = (105, 133, 88, 255)
+RED = (232, 82, 74)
+BLUE = (169, 243, 250)
+GREEN = (202, 240, 139)
 
 
 def is_close_to(color: tuple, other_color: tuple, width: int):
