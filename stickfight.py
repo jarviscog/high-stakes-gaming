@@ -6,11 +6,11 @@ from PIL import Image, ImageGrab
 from pprint import pprint
 
 SCREENWIDTH, SCREENHEIGHT = pyautogui.size()
-THRESHOLD = 20 
+THRESHOLD = 40 
 
-YELLOW = (220, 188, 76)
+YELLOW = (237, 200, 48)
+BLUE = (95, 176, 210)
 RED = (232, 82, 74)
-BLUE = (169, 243, 250)
 GREEN = (202, 240, 139)
 
 
@@ -33,14 +33,18 @@ def checkColor(x, y):
 
 
 def main():
+    print(f"SCREEN W/H: {SCREENWIDTH}/{SCREENHEIGHT}")
+    print(f"THRESHOLD: {THRESHOLD}")
+    print(f"")
 
     points = []
-    for y_diff in range(0, 300, 100):
-        for x_diff in range(0, 800, 100):
+    for y_diff in range(50, 400, 50):
+        for x_diff in range(0, 800, 50):
             # Center
             points.append(checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2) - y_diff)),
             points.append(checkColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
             points.append(checkColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
+    time.sleep(2)
     print("Running")
     while True:
         time.sleep(0.1)
