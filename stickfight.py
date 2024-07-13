@@ -36,31 +36,38 @@ def main():
         # print("[" + one.poll() + ", " + two.poll() + ", " + three.poll() + r"]")
         points = [
             checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2 - 50, SCREENHEIGHT/2 - 50),
             checkColor(SCREENWIDTH/2, SCREENHEIGHT/2 - 50),
             checkColor(SCREENWIDTH/2 - 50, SCREENHEIGHT/2),
+            checkColor(SCREENWIDTH/2 + 50, SCREENHEIGHT/2),
+            checkColor(SCREENWIDTH/2 - 50, SCREENHEIGHT/2 - 50),
             checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
-            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2),
+            checkColor(SCREENWIDTH/2, SCREENHEIGHT/2 - 20),
+            checkColor(SCREENWIDTH/2 - 20, SCREENHEIGHT/2),
+            checkColor(SCREENWIDTH/2 + 20, SCREENHEIGHT/2),
+            checkColor(SCREENWIDTH/2 - 20, SCREENHEIGHT/2 - 20),
         ]
+        yellow_votes = 0
+        red_votes = 0
+        blue_votes = 0
+        green_votes = 0
+        for point in points:
+            if is_close_to(point, YELLOW, 20):
+                yellow_votes += 1
+            if is_close_to(point, BLUE, 20):
+                blue_votes += 1
+            if is_close_to(point, RED, 20):
+                red_votes += 1
+            if is_close_to(point, GREEN, 20):
+                green_votes += 1
 
-
-        if vote >= 2:
-            print("Colors")
-            # The idea here is that if the same color shows up in two different part of the screen, 
-            # then it must be the text from the victory screen, 
-            # as the only things on the screen in the players colors are the
-            # stick-man, and the victory screen
-            if one.poll() == two.poll():
-                shock_players(one.poll())
-            elif one.poll() == three.poll():
-                shock_players(two.poll())
-            elif two.poll() == three.poll():
-                shock_players(three.poll())
+        if red_votes > 2:
+            print("Red won")
+        if blue_votes > 2:
+            print("Blue won")
+        if yellow_votes > 2:
+            print("Yellow won")
+        if green_votes > 2:
+            print("Green won")
 
 
 def shock_players(winner: str):
