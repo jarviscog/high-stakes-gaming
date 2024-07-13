@@ -38,16 +38,36 @@ def main():
         time.sleep(0.1)
         # print("[" + one.poll() + ", " + two.poll() + ", " + three.poll() + r"]")
         points = [
+            # Center
             checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2)),
             checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2 - 50)),
             checkColor(int(SCREENWIDTH/2 - 50), int(SCREENHEIGHT/2)),
             checkColor(int(SCREENWIDTH/2 + 50), int(SCREENHEIGHT/2)),
             checkColor(int(SCREENWIDTH/2 - 50), int(SCREENHEIGHT/2 - 50)),
-            checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2)),
-            checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2 - 20)),
-            checkColor(int(SCREENWIDTH/2 - 20), int(SCREENHEIGHT/2)),
-            checkColor(int(SCREENWIDTH/2 + 20), int(SCREENHEIGHT/2)),
-            checkColor(int(SCREENWIDTH/2 - 20), int(SCREENHEIGHT/2 - 20)),
+            # Slight off left
+            checkColor(int(SCREENWIDTH/2) - 20, int(SCREENHEIGHT/2) + 50),
+            checkColor(int(SCREENWIDTH/2) - 20, int(SCREENHEIGHT/2) + 40),
+            checkColor(int(SCREENWIDTH/2) - 20, int(SCREENHEIGHT/2) + 30),
+            # Slight off right 
+            checkColor(int(SCREENWIDTH/2) + 20, int(SCREENHEIGHT/2) + 50),
+            checkColor(int(SCREENWIDTH/2) + 20, int(SCREENHEIGHT/2) + 40),
+            checkColor(int(SCREENWIDTH/2) + 20, int(SCREENHEIGHT/2) + 30),
+            # Off left 
+            checkColor(int(SCREENWIDTH/2) - 90, int(SCREENHEIGHT/2) + 50),
+            checkColor(int(SCREENWIDTH/2) - 90, int(SCREENHEIGHT/2) + 40),
+            checkColor(int(SCREENWIDTH/2) - 90, int(SCREENHEIGHT/2) + 30),
+            # Off right 
+            checkColor(int(SCREENWIDTH/2) + 90, int(SCREENHEIGHT/2) + 50),
+            checkColor(int(SCREENWIDTH/2) + 90, int(SCREENHEIGHT/2) + 40),
+            checkColor(int(SCREENWIDTH/2) + 90, int(SCREENHEIGHT/2) + 30),
+            # Off left 
+            checkColor(int(SCREENWIDTH/2) - 150, int(SCREENHEIGHT/2) + 50),
+            checkColor(int(SCREENWIDTH/2) - 150, int(SCREENHEIGHT/2) + 40),
+            checkColor(int(SCREENWIDTH/2) - 150, int(SCREENHEIGHT/2) + 30),
+            # Off right 
+            checkColor(int(SCREENWIDTH/2) + 150, int(SCREENHEIGHT/2) + 50),
+            checkColor(int(SCREENWIDTH/2) + 150, int(SCREENHEIGHT/2) + 40),
+            checkColor(int(SCREENWIDTH/2) + 150, int(SCREENHEIGHT/2) + 30),
         ]
         yellow_votes = 0
         red_votes = 0
@@ -63,7 +83,7 @@ def main():
             if is_close_to(point, GREEN, 20):
                 green_votes += 1
 
-        if red_votes > 2:
+        if red_votes > 3:
             print("Red won")
         if blue_votes > 2:
             print("Blue won")
