@@ -21,7 +21,7 @@ def is_close_to(color: tuple, other_color: tuple, width: int):
             close = False
     return close
 
-def checkColor(x, y) -> :
+def checkColor(x, y): 
     im = ImageGrab.grab(bbox=(x, y, x+1, y+1))
     rgbim = im.convert('RGB')
     return rgbim.getpixel((0,0))
