@@ -37,18 +37,17 @@ def main():
     print(f"THRESHOLD: {THRESHOLD}")
     print(f"")
 
-    points = []
-    for y_diff in range(50, 400, 50):
-        for x_diff in range(0, 800, 50):
-            # Center
-            points.append(checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2) - y_diff)),
-            points.append(checkColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
-            points.append(checkColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
-    time.sleep(2)
     print("Running")
     while True:
-        time.sleep(0.1)
+        # time.sleep(0.1)
         # print("[" + one.poll() + ", " + two.poll() + ", " + three.poll() + r"]")
+        points = []
+        for y_diff in range(50, 400, 100):
+            for x_diff in range(0, 300, 100):
+                # Center
+                points.append(checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2) - y_diff)),
+                points.append(checkColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
+                points.append(checkColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
 
         yellow_votes = 0
         red_votes = 0
