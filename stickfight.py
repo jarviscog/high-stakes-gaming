@@ -15,16 +15,12 @@ GREEN = (202, 240, 139)
 
 
 def is_close_to(color: tuple, other_color: tuple, width: int):
-    # print(f"Is close to {color} {other_color} {width}")
     close = True
     for i in range(3):
-        # print("Colors:")
-        # print(abs(color[i] - other_color[i]))
         if (width < abs(color[i] - other_color[i])):
-            # print("Failed to match")
-            # print(width > abs(color[i] - other_color[i]))
             return False
     return True 
+
 
 def checkColor(x, y): 
     im = ImageGrab.grab(bbox=(x, y, x+1, y+1))
@@ -44,7 +40,6 @@ def main():
         points = []
         for y_diff in range(50, 400, 100):
             for x_diff in range(0, 300, 100):
-                # Center
                 points.append(checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2) - y_diff)),
                 points.append(checkColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
                 points.append(checkColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
@@ -64,18 +59,29 @@ def main():
                 green_votes += 1
         print(f"Votes: Y:{yellow_votes} B:{blue_votes} R:{red_votes} G:{green_votes}")
 
-        if red_votes > 3:
+        if red_votes > 8:
             print("Red won")
-        if blue_votes > 3:
+            shock_players("RED")
+            time.sleep(2)
+            continue
+        if blue_votes > 8:
             print("Blue won")
-        if yellow_votes > 3:
+            shock_players("BLUE")
+            time.sleep(2)
+            continue
+        if yellow_votes > 8:
             print("Yellow won")
-        if green_votes > 3:
+            shock_players("YELLOW")
+            time.sleep(2)
+            continue
+        if green_votes > 8:
             print("Green won")
+            shock_players("GREEN")
+            time.sleep(2)
+            continue
 
 
 def shock_players(winner: str):
-
     if winner != 'GREEN':
         print("Shock GREEN")
     if winner != 'RED':
