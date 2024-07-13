@@ -3,8 +3,10 @@ import pyscreenshot
 
 import pyautogui
 from PIL import Image, ImageGrab
+from pprint import pprint
 
 SCREENWIDTH, SCREENHEIGHT = pyautogui.size()
+THRESHOLD = 20 
 
 YELLOW = (220, 188, 76)
 RED = (232, 82, 74)
@@ -29,67 +31,43 @@ def checkColor(x, y):
     rgbim = im.convert('RGB')
     return rgbim.getpixel((0,0))
 
-CENTER = { SCREENWIDTH / 2, SCREENHEIGHT / 2, }
 
 def main():
-    print("Running")
 
+    points = []
+    for y_diff in range(0, 300, 100):
+        for x_diff in range(0, 800, 100):
+            # Center
+            points.append(checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2) - y_diff)),
+            points.append(checkColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
+            points.append(checkColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
+    print("Running")
     while True:
         time.sleep(0.1)
         # print("[" + one.poll() + ", " + two.poll() + ", " + three.poll() + r"]")
-        points = [
-            # Center
-            checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2)),
-            checkColor(int(SCREENWIDTH/2), int(SCREENHEIGHT/2 - 50)),
-            checkColor(int(SCREENWIDTH/2 - 50), int(SCREENHEIGHT/2)),
-            checkColor(int(SCREENWIDTH/2 + 50), int(SCREENHEIGHT/2)),
-            checkColor(int(SCREENWIDTH/2 - 50), int(SCREENHEIGHT/2 - 50)),
-            # Slight off left
-            checkColor(int(SCREENWIDTH/2) - 20, int(SCREENHEIGHT/2) + 50),
-            checkColor(int(SCREENWIDTH/2) - 20, int(SCREENHEIGHT/2) + 40),
-            checkColor(int(SCREENWIDTH/2) - 20, int(SCREENHEIGHT/2) + 30),
-            # Slight off right 
-            checkColor(int(SCREENWIDTH/2) + 20, int(SCREENHEIGHT/2) + 50),
-            checkColor(int(SCREENWIDTH/2) + 20, int(SCREENHEIGHT/2) + 40),
-            checkColor(int(SCREENWIDTH/2) + 20, int(SCREENHEIGHT/2) + 30),
-            # Off left 
-            checkColor(int(SCREENWIDTH/2) - 90, int(SCREENHEIGHT/2) + 50),
-            checkColor(int(SCREENWIDTH/2) - 90, int(SCREENHEIGHT/2) + 40),
-            checkColor(int(SCREENWIDTH/2) - 90, int(SCREENHEIGHT/2) + 30),
-            # Off right 
-            checkColor(int(SCREENWIDTH/2) + 90, int(SCREENHEIGHT/2) + 50),
-            checkColor(int(SCREENWIDTH/2) + 90, int(SCREENHEIGHT/2) + 40),
-            checkColor(int(SCREENWIDTH/2) + 90, int(SCREENHEIGHT/2) + 30),
-            # Off left 
-            checkColor(int(SCREENWIDTH/2) - 150, int(SCREENHEIGHT/2) + 50),
-            checkColor(int(SCREENWIDTH/2) - 150, int(SCREENHEIGHT/2) + 40),
-            checkColor(int(SCREENWIDTH/2) - 150, int(SCREENHEIGHT/2) + 30),
-            # Off right 
-            checkColor(int(SCREENWIDTH/2) + 150, int(SCREENHEIGHT/2) + 50),
-            checkColor(int(SCREENWIDTH/2) + 150, int(SCREENHEIGHT/2) + 40),
-            checkColor(int(SCREENWIDTH/2) + 150, int(SCREENHEIGHT/2) + 30),
-        ]
+
         yellow_votes = 0
         red_votes = 0
         blue_votes = 0
         green_votes = 0
         for point in points:
-            if is_close_to(point, YELLOW, 20):
+            if is_close_to(point, YELLOW, THRESHOLD):
                 yellow_votes += 1
-            if is_close_to(point, BLUE, 20):
+            if is_close_to(point, BLUE, THRESHOLD):
                 blue_votes += 1
-            if is_close_to(point, RED, 20):
+            if is_close_to(point, RED, THRESHOLD):
                 red_votes += 1
-            if is_close_to(point, GREEN, 20):
+            if is_close_to(point, GREEN, THRESHOLD):
                 green_votes += 1
+        print(f"Votes: Y:{yellow_votes} B:{blue_votes} R:{red_votes} G:{green_votes}")
 
         if red_votes > 3:
             print("Red won")
-        if blue_votes > 2:
+        if blue_votes > 3:
             print("Blue won")
-        if yellow_votes > 2:
+        if yellow_votes > 3:
             print("Yellow won")
-        if green_votes > 2:
+        if green_votes > 3:
             print("Green won")
 
 
