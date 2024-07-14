@@ -7,7 +7,7 @@ from pprint import pprint
 import serial
 
 SCREENWIDTH, SCREENHEIGHT = pyautogui.size()
-THRESHOLD = 40
+THRESHOLD = 20
 
 YELLOW = (237, 200, 48)
 BLUE = (95, 176, 210)
