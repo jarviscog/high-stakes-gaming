@@ -4,15 +4,22 @@ import pyscreenshot
 import pyautogui
 from PIL import Image, ImageGrab
 from pprint import pprint
+import serial
 
 SCREENWIDTH, SCREENHEIGHT = pyautogui.size()
 THRESHOLD = 40
 
 YELLOW = (237, 200, 48)
 BLUE = (95, 176, 210)
-RED = (232, 82, 74)
-GREEN = (202, 240, 139)
+RED = (233, 110, 117)
+GREEN = (142, 200, 97)
 
+serial_connection = serial.Serial()
+# yapper.port = 'COM7'
+serial_connection.port = 'COM3'
+serial_connection.baudrate = 115200
+serial_connection.timeout = 0.1
+serial_connection.open()
 
 
 def is_close_to(color: tuple, other_color: tuple, width: int):
@@ -59,22 +66,22 @@ def main():
                 green_votes += 1
         print(f"Votes: Y:{yellow_votes} B:{blue_votes} R:{red_votes} G:{green_votes}")
 
-        if red_votes >= 5:
+        if red_votes >= 4:
             print("Red won")
             shock_players("RED")
             time.sleep(2)
             continue
-        if blue_votes >= 5:
+        if blue_votes >= 4:
             print("Blue won")
             shock_players("BLUE")
             time.sleep(2)
             continue
-        if yellow_votes >= 5:
+        if yellow_votes >= 4:
             print("Yellow won")
             shock_players("YELLOW")
             time.sleep(2)
             continue
-        if green_votes >= 5:
+        if green_votes >= 4:
             print("Green won")
             shock_players("GREEN")
             time.sleep(2)
