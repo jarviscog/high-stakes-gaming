@@ -30,7 +30,7 @@ def is_close_to(color: tuple, other_color: tuple, width: int):
     return True 
 
 
-def checkColor(x, y): 
+def getColor(x, y): 
     im = ImageGrab.grab(bbox=(x, y, x+1, y+1))
     rgbim = im.convert('RGB')
     return rgbim.getpixel((0,0))
@@ -48,8 +48,8 @@ def main():
         points = []
         for y_diff in range(100, 300, 100):
             for x_diff in range(10, 200, 10):
-                points.append(checkColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
-                points.append(checkColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
+                points.append(getColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
+                points.append(getColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
 
         yellow_votes = 0
         red_votes = 0
