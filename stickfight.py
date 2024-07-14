@@ -12,7 +12,7 @@ THRESHOLD = 40
 YELLOW = (237, 200, 48)
 BLUE = (95, 176, 210)
 RED = (233, 110, 117)
-GREEN = (142, 200, 97)
+GREEN = (148, 202, 96)
 
 serial_connection = serial.Serial()
 # yapper.port = 'COM7'
@@ -47,7 +47,7 @@ def main():
         # print("[" + one.poll() + ", " + two.poll() + ", " + three.poll() + r"]")
         points = []
         for y_diff in range(100, 300, 100):
-            for x_diff in range(10, 100, 10):
+            for x_diff in range(10, 200, 10):
                 points.append(checkColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
                 points.append(checkColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
 
