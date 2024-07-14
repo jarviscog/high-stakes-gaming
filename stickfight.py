@@ -39,8 +39,8 @@ def main():
         # time.sleep(0.1)
         # print("[" + one.poll() + ", " + two.poll() + ", " + three.poll() + r"]")
         points = []
-        for y_diff in range(0, 300, 100):
-            for x_diff in range(0, 100, 10):
+        for y_diff in range(100, 300, 100):
+            for x_diff in range(10, 100, 10):
                 points.append(checkColor(int(SCREENWIDTH/2) - x_diff, int(SCREENHEIGHT/2) - y_diff)),
                 points.append(checkColor(int(SCREENWIDTH/2) + x_diff, int(SCREENHEIGHT/2) - y_diff)),
 
@@ -59,22 +59,22 @@ def main():
                 green_votes += 1
         print(f"Votes: Y:{yellow_votes} B:{blue_votes} R:{red_votes} G:{green_votes}")
 
-        if red_votes >= 3:
+        if red_votes >= 5:
             print("Red won")
             shock_players("RED")
             time.sleep(2)
             continue
-        if blue_votes >= 3:
+        if blue_votes >= 5:
             print("Blue won")
             shock_players("BLUE")
             time.sleep(2)
             continue
-        if yellow_votes >= 3:
+        if yellow_votes >= 5:
             print("Yellow won")
             shock_players("YELLOW")
             time.sleep(2)
             continue
-        if green_votes >= 3:
+        if green_votes >= 5:
             print("Green won")
             shock_players("GREEN")
             time.sleep(2)
